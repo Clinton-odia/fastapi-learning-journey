@@ -11,7 +11,31 @@ class task(BaseModel):
     completed : bool = True
 
 #Task data
+data = [
+    {
+        "id" :1,
+        "title" : "complete fastapi course",
+        "description" : None,
+        "completed" : True ,
+    },
+    {
+        "id" :2,
+        "title" : "buy the groceries",
+        "description" : "yams, eggs, beans",
+        "completed" : False,
+    },
+    {
+        "id" :1,
+        "title" : "Finish this project",
+        # "description" : None,
+        # "completed" : True ,
+    },
+]
 
+#Home page endpoint
+@app.get("/")
+def welcome():
+    return {"message" : "Welcome to my todo-list app"}
 # Create task endpoint
 
 
