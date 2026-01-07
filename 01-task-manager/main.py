@@ -4,7 +4,7 @@ app = FastAPI()
 
 
 #Pydantic model
-class task(BaseModel):
+class Task(BaseModel):
     id : int
     title : str
     description : str | None = None
@@ -25,7 +25,7 @@ data = [
         "completed" : False,
     },
     {
-        "id" :1,
+        "id" :3,
         "title" : "Finish this project",
         # "description" : None,
         # "completed" : True ,
@@ -37,12 +37,18 @@ data = [
 def welcome():
     return {"message" : "Welcome to my todo-list app"}
 # Create task endpoint
-
-
+@app.post("/tasks")
+def create_tasks(task : Task):
+    data.append(task)
+    return {"message" : "task has been created"}
 #Read a single task
+
 
 #Read all the tasks
 
+@app.get("/tasks")
+def get_all_tasks(): 
+    return {"detail" : data }
 #Update task
 
 #Delete tasks
